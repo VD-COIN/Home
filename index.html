@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYUDAGI - Online Learning</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: url('backgroundnew.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: #ff6347; /* Tomato color for text */
+            overflow: hidden; /* Prevent scrolling */
+        }
+        header {
+            padding: 15px;
+            text-align: center;
+            font-size: 2.5em;
+            position: relative;
+            color: #ffeb3b; /* Yellow for header text */
+            text-shadow: 2px 2px 4px #000000; /* Shadow for better visibility */
+            z-index: 1;
+        }
+        .menu-btn {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            background: #ffeb3b; /* Yellow background */
+            color: #ff6347; /* Tomato color */
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9em; /* Decreased size */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        header h1 {
+            margin-left: 70px; /* Gap between button and text */
+        }
+        .content {
+            position: relative;
+            height: calc(100vh - 60px); /* Adjust height to prevent overlap with the sidebar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+            padding: 20px;
+        }
+        .content h1 {
+            font-size: 2em; /* Adjusted font size */
+            animation: bounce 2s infinite; /* Bounce animation */
+            white-space: nowrap;
+            overflow: hidden; /* Hide overflow text */
+            margin: 0;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1;
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #ffeb3b; /* Yellow color */
+            display: block;
+            margin: 10px 0; /* Margin between links */
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background: #ff6347; /* Tomato color */
+            color: #ffffff;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2em;
+            color: #ffeb3b; /* Yellow color */
+        }
+        .profile-box {
+            margin: 20px;
+            padding: 15px;
+            background: #fff;
+            border: 2px solid #ffeb3b; /* Yellow border */
+            color: #111;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .profile-box img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #ff6347; /* Tomato border */
+        }
+        .profile-box button {
+            background: #ff6347; /* Tomato color */
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .profile-box button:hover {
+            background: #ff4500; /* Orange-red color */
+        }
+        .fun-element {
+            width: 80px;
+            height: 80px;
+            background-color: #ffeb3b; /* Yellow color */
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .stars {
+            width: 100px;
+            height: 100px;
+            background: url('stars.png') no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        .balloon {
+            width: 80px;
+            height: 120px;
+            background-color: #ff1493; /* Deep pink color */
+            border-radius: 50% 50% 50% 0;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: float 5s ease-in-out infinite;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background-color: #ff6347; /* Tomato color */
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-btn" onclick="openNav()">☰</button>
+        <h1>EYUDAGI - Online Learning</h1>
+    </header>
+    <div class="content">
+        <h1>LEARN NOW BUILD YOUR TOMORROW!!!</h1>
+        <div class="fun-element"></div> <!-- Fun element added -->
+        <div class="stars"></div> <!-- Stars element added -->
+        <div class="balloon"></div> <!-- Balloon element added -->
+    </div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div class="profile-box">
+            <img id="profilePic" src="" alt="Profile Picture">
+            <div id="username">Username</div>
+            <button onclick="window.location.href='profile.html'">Profile</button>
+        </div>
+        <a href="home.html">Home</a>
+        <a href="learn.html">Start learning</a>
+        <a href="Extra.html">Extra courses</a>
+        <a href="home.html">My Performance</a>
+        <a href="Notestore.html">NoteStore</a>
+        <a href="scholarship.html">Scholarship</a>
+        <a href="Table.html">Tables</a>
+        <a href="Notepad.html">Notepad</a>
+        <a href="Diary.html">Diary</a>
+        <a href="support.html">Homework Supporter</a>
+        <a href="apps.html">MOREAPPS</a>
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const profilePic = localStorage.getItem('profilePic');
+            const username = localStorage.getItem('username');
+            if (profilePic) {
+                document.getElementById('profilePic').src = profilePic;
+            }
+            if (username) {
+                document.getElementById('username').textContent = username;
+            }
+        });
+    </script>
+</body>
+</html>
